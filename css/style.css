@@ -157,6 +157,26 @@ a {
     box-shadow: var(--shadow-md);
 }
 
+.navbar.scrolled .logo-text {
+    color: var(--color-black);
+}
+
+.navbar.scrolled .logo-accent {
+    color: var(--color-gray-600);
+}
+
+.navbar.scrolled .nav-links a {
+    color: var(--color-black);
+}
+
+.navbar.scrolled .nav-links a::after {
+    background-color: var(--color-black);
+}
+
+.navbar.scrolled .hamburger span {
+    background-color: var(--color-black);
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -172,11 +192,11 @@ a {
 }
 
 .logo-text {
-    color: var(--color-black);
+    color: var(--color-white);
 }
 
 .logo-accent {
-    color: var(--color-gray-600);
+    color: var(--color-gray-400);
 }
 
 .nav-links {
@@ -189,6 +209,7 @@ a {
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
+    color: var(--color-white);
 }
 
 .nav-links a::after {
@@ -198,7 +219,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--color-black);
+    background-color: var(--color-white);
     transition: width var(--transition-normal);
 }
 
@@ -217,7 +238,7 @@ a {
 .hamburger span {
     width: 28px;
     height: 2px;
-    background-color: var(--color-black);
+    background-color: var(--color-white);
     transition: all var(--transition-normal);
 }
 
@@ -233,7 +254,7 @@ a {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Hero Section */
+/* Hero Section - Black background with white elements */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -241,19 +262,72 @@ a {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-100) 100%);
+    background: var(--color-black);
     overflow: hidden;
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     max-width: 1200px;
     width: 100%;
     padding: 0 1.5rem;
     padding-top: 6rem;
+    gap: 2rem;
+}
+
+/* Hero Logo Styles */
+.hero-logo {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 2rem;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.logo-circle {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: 3px solid var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-inner-shape {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 3px solid var(--color-white);
+    border-radius: 20px;
+    transform: rotate(45deg);
+}
+
+.logo-center {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .hero-text {
@@ -262,6 +336,7 @@ a {
 
 .hero-title {
     margin-bottom: 1.5rem;
+    color: var(--color-white);
 }
 
 .hero-title .line {
@@ -269,7 +344,7 @@ a {
 }
 
 .hero-title .accent {
-    background: linear-gradient(90deg, var(--color-gray-600), var(--color-gray-400));
+    background: linear-gradient(90deg, var(--color-gray-400), var(--color-gray-500));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -277,60 +352,51 @@ a {
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--color-gray-600);
+    color: var(--color-gray-400);
     margin-bottom: 1rem;
     font-weight: 500;
 }
 
 .hero-description {
     font-size: 1.125rem;
-    color: var(--color-gray-700);
+    color: var(--color-gray-500);
     margin-bottom: 2rem;
-    max-width: 500px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-}
-
-.hero-visual {
-    position: relative;
-    height: 400px;
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.geometric-shape {
-    position: absolute;
-    border: 2px solid var(--color-black);
-    animation: float 6s ease-in-out infinite;
+/* Hero specific button styles */
+.hero .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-white);
 }
 
-.shape-1 {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    animation-delay: 0s;
+.hero .btn-primary:hover {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-200);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
 }
 
-.shape-2 {
-    width: 180px;
-    height: 180px;
-    border-radius: 20px;
-    transform: rotate(45deg);
-    animation: floatRotate 6s ease-in-out infinite;
-    animation-delay: 1s;
+.hero .btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
 }
 
-.shape-3 {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: var(--color-black);
-    animation-delay: 2s;
+.hero .btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    transform: translateY(-3px);
 }
 
 @keyframes float {
@@ -366,7 +432,7 @@ a {
 .mouse {
     width: 24px;
     height: 40px;
-    border: 2px solid var(--color-black);
+    border: 2px solid var(--color-white);
     border-radius: 12px;
     position: relative;
 }
@@ -374,7 +440,7 @@ a {
 .wheel {
     width: 4px;
     height: 8px;
-    background-color: var(--color-black);
+    background-color: var(--color-white);
     border-radius: 2px;
     position: absolute;
     top: 8px;
@@ -405,7 +471,7 @@ a {
 
 .scroll-indicator span {
     font-size: 0.75rem;
-    color: var(--color-gray-600);
+    color: var(--color-gray-400);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
