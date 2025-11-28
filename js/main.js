@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
     
+    if (!navbar) return;
+    
     function handleScroll() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -38,6 +40,8 @@ function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navLinksItems = document.querySelectorAll('.nav-links a');
+    
+    if (!hamburger || !navLinks) return;
     
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
@@ -154,7 +158,8 @@ function initSmoothScroll() {
             const target = document.querySelector(href);
             
             if (target) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                 
                 window.scrollTo({
@@ -269,16 +274,27 @@ function showNotification(message, type) {
 
 /**
  * Add parallax effect to hero section (optional enhancement)
+ * Throttled using requestAnimationFrame for better performance
  */
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
+(function() {
+    var ticking = false;
     
-    if (hero && scrolled < window.innerHeight) {
-        const shapes = document.querySelectorAll('.geometric-shape');
-        shapes.forEach(function(shape, index) {
-            const speed = 0.1 + (index * 0.05);
-            shape.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
-        });
-    }
-});
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                var scrolled = window.pageYOffset;
+                var hero = document.querySelector('.hero');
+                
+                if (hero && scrolled < window.innerHeight) {
+                    var shapes = document.querySelectorAll('.geometric-shape');
+                    shapes.forEach(function(shape, index) {
+                        var speed = 0.1 + (index * 0.05);
+                        shape.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+                    });
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();

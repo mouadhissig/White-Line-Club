@@ -321,6 +321,7 @@ a {
     height: 180px;
     border-radius: 20px;
     transform: rotate(45deg);
+    animation: floatRotate 6s ease-in-out infinite;
     animation-delay: 1s;
 }
 
@@ -339,10 +340,6 @@ a {
     50% {
         transform: translateY(-20px) rotate(5deg);
     }
-}
-
-.shape-2 {
-    animation-name: floatRotate;
 }
 
 @keyframes floatRotate {
